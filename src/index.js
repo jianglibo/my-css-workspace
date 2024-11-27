@@ -45,14 +45,27 @@ const argv = yargs
     description: 'Minify the output CSS',
     default: false,
   })
+  .option('input', {
+    alias: 'i',
+    type: 'string',
+    description: 'Input CSS file path',
+    default: 'source/input.css',
+  })
+  .option('output', {
+    alias: 'o',
+    type: 'string',
+    description: 'Output CSS file path',
+    default: 'dist/output.css',
+  })
   .argv;
 
 // Input and output file paths
-const inputFile = __dirname + '/input.css';
-const outputFile = 'output.css';
+// const inputFile = __dirname + '/input.css';
+// const outputFile = 'output.css';
+// if parent of output file does not exist, create it
 
 // Process the CSS with or without minification
-processCss(inputFile, outputFile, argv.minify);
+processCss(argv.input, argv.output, argv.minify);
 
 
 // const fs = require('fs');
